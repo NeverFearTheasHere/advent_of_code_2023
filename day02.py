@@ -20,8 +20,24 @@ def gameIsPossible(line):
     return maxNumberOfRedCubes <= 12 and maxNumberOfGreenCubes <= 13 and maxNumberOfBlueCubes <= 14
 
 
+def calculateTotalPowerOfMinimumSetOfCubes(inputLines):
+    sumOfPowersOfMinimumSetsOfCubes = 0
+    for line in inputLines:
+        sumOfPowersOfMinimumSetsOfCubes += calculatePowerOfMinimumSetOfCubes(line)
+
+    return sumOfPowersOfMinimumSetsOfCubes
+
+
+def calculatePowerOfMinimumSetOfCubes(line):
+    # The power of a set of cubes is equal to the numbers of red, green, and blue cubes multiplied together
+    maxNumberOfRedCubes = max([int(x) for x in re.findall('\d+(?= red)', line)])
+    maxNumberOfGreenCubes = max([int(x) for x in re.findall('\d+(?= green)', line)])
+    maxNumberOfBlueCubes = max([int(x) for x in re.findall('\d+(?= blue)', line)])
+    return maxNumberOfRedCubes * maxNumberOfGreenCubes * maxNumberOfBlueCubes
+
+
 if __name__ == "__main__":
     with open('day02_input.txt') as file:
         lines = file.read().splitlines()
-        answer = calculateSumOfPossibleGameIds(lines)
+        answer = calculateTotalPowerOfMinimumSetOfCubes(lines)
         print(answer)
