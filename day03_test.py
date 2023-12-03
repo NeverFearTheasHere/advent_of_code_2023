@@ -8,6 +8,11 @@ class Test_Day03(unittest.TestCase):
         ]
         self.assertEqual(day03.calculateSumOfPartNumbers(exampleLines), 4361)
 
+    def test_part2(self):
+        exampleLines = [
+            '467..114..' ,'...*......' ,'..35..633.' ,'......#...' ,'617*......' ,'.....+.58.' ,'..592.....' ,'......755.' ,'...$.*....' ,'.664.598..'
+        ]
+        self.assertEqual(day03.calculateSumOfGearRatios(exampleLines), 467835)
 
 if __name__ == '__main__':
     unittest.main()
